@@ -33,6 +33,9 @@ def decimalPress(opPhase: bool, secondInputPhase: bool):
 def equalsPress(opPhase: bool, secondInputPhase: bool):
     pass
 
+def signPress():
+    pass
+
 # Logic Functions
 def changeOperation(opPhase: bool, secondInputPhase: bool):
     pass
