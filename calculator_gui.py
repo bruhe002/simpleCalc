@@ -1,4 +1,7 @@
 from tkinter import *
+from use_cases import *
+
+opDict = {'operand': '', 'operator': ''}
 
 rootWindow = Tk()
 
@@ -8,58 +11,58 @@ rootWindow.geometry('332x520')
 rootWindow.resizable(False, False)
 
 # row 0
-clearBtn = Button(rootWindow, text='C', font='18', bg='#CC3E3E', padx=29, pady=30)
-clearBtn.grid(row=0, column=0)
-
 entry = Entry(rootWindow, font=('Ariel',16), borderwidth=5)
 entry.grid(row=0, column=1, columnspan=3)
 entry.insert(0, "0")
-entry.config(state= "disabled")
+entry.config(state= "readonly")
+
+clearBtn = Button(rootWindow, text='C', font='18', bg='#CC3E3E', padx=29, pady=30, command=lambda: clearPress(entry))
+clearBtn.grid(row=0, column=0)
 
 # row 1
-sevenBtn = Button(rootWindow, text='7', font='20', padx=31, pady=30)
+sevenBtn = Button(rootWindow, text='7', font='20', padx=31, pady=30, command=lambda: numPress(7, entry))
 sevenBtn.grid(row=1,column=0)
 
-eightBtn = Button(rootWindow, text='8', font='20', padx=31, pady=30)
+eightBtn = Button(rootWindow, text='8', font='20', padx=31, pady=30, command=lambda: numPress(8, entry))
 eightBtn.grid(row=1,column=1)
 
-nineBtn = Button(rootWindow, text='9', font='20', padx=31, pady=30)
+nineBtn = Button(rootWindow, text='9', font='20', padx=31, pady=30, command=lambda: numPress(9, entry))
 nineBtn.grid(row=1,column=2)
 
 addBtn = Button(rootWindow, text='+', font='20', padx=31, pady=30, bg='#D3D3D3')
 addBtn.grid(row=1,column=3)
 
 # row 2
-fourBtn = Button(rootWindow, text='4', font='20', padx=31, pady=30)
+fourBtn = Button(rootWindow, text='4', font='20', padx=31, pady=30, command=lambda: numPress(4, entry))
 fourBtn.grid(row=2,column=0)
 
-fiveBtn = Button(rootWindow, text='5', font='20', padx=31, pady=30)
+fiveBtn = Button(rootWindow, text='5', font='20', padx=31, pady=30, command=lambda: numPress(5, entry))
 fiveBtn.grid(row=2,column=1)
 
-sixBtn = Button(rootWindow, text='6', font='20', padx=31, pady=30)
+sixBtn = Button(rootWindow, text='6', font='20', padx=31, pady=30, command=lambda: numPress(6, entry))
 sixBtn.grid(row=2,column=2)
 
 subBtn = Button(rootWindow, text='-', font='30', padx=33, pady=30, bg='#D3D3D3')
 subBtn.grid(row=2,column=3)
 
 # row 3
-oneBtn = Button(rootWindow, text='1', font='20', padx=31, pady=30)
+oneBtn = Button(rootWindow, text='1', font='20', padx=31, pady=30, command=lambda: numPress(1, entry))
 oneBtn.grid(row=3,column=0)
 
-twoBtn = Button(rootWindow, text='2', font='20', padx=31, pady=30)
+twoBtn = Button(rootWindow, text='2', font='20', padx=31, pady=30, command=lambda: numPress(2, entry))
 twoBtn.grid(row=3,column=1)
 
-threeBtn = Button(rootWindow, text='3', font='20', padx=31, pady=30)
+threeBtn = Button(rootWindow, text='3', font='20', padx=31, pady=30, command=lambda: numPress(3, entry))
 threeBtn.grid(row=3,column=2)
 
 multBtn = Button(rootWindow, text='X', font='20', padx=30, pady=30, bg='#D3D3D3')
 multBtn.grid(row=3,column=3)
 
 # row 4
-decimalBtn = Button(rootWindow, text='.00', font='19', padx=24, pady=30, bg='#D3D3D3')
+decimalBtn = Button(rootWindow, text='.00', font='19', padx=24, pady=30, bg='#D3D3D3', command=lambda: decimalPress(entry))
 decimalBtn.grid(row=4,column=0)
 
-zeroBtn = Button(rootWindow, text='0', font='20', padx=31, pady=30)
+zeroBtn = Button(rootWindow, text='0', font='20', padx=31, pady=30, command=lambda: numPress(0, entry))
 zeroBtn.grid(row=4,column=1)
 
 equalBtn = Button(rootWindow, text='=', font='20', padx=31, pady=30, bg='#D3D3D3')
@@ -69,7 +72,7 @@ divBtn = Button(rootWindow, text='/', font='21', padx=33, pady=30, bg='#D3D3D3')
 divBtn.grid(row=4,column=3)
 
 # row 5
-signBtn = Button(rootWindow, text="+ / -", font='30', padx=150, pady=20, bg='#D3D3D3')
+signBtn = Button(rootWindow, text="+ / -", font='30', padx=150, pady=20, bg='#D3D3D3', command=lambda: signPress(entry))
 signBtn.grid(row=5, column=0, columnspan=4)
 
 rootWindow.mainloop()
