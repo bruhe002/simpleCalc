@@ -67,7 +67,7 @@ def equalsPress(myDict: dict, input: Entry):
         value = operandOne * operandTwo
     elif operator == '/':
         value = int(operandOne / operandTwo) if operandOne % operandTwo == 0 else float(operandOne / operandTwo)
-
+    
     myDict['operand'] = str(value)
 
     input.delete(0, END)

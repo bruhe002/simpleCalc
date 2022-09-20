@@ -29,7 +29,7 @@ eightBtn.grid(row=1,column=1)
 nineBtn = Button(rootWindow, text='9', font='20', padx=31, pady=30, command=lambda: numPress(9, entry))
 nineBtn.grid(row=1,column=2)
 
-addBtn = Button(rootWindow, text='+', font='20', padx=30, pady=30, bg='#D3D3D3')
+addBtn = Button(rootWindow, text='+', font='20', padx=30, pady=30, bg='#D3D3D3', command=lambda: addPress(opDict, entry))
 addBtn.grid(row=1,column=3)
 
 # row 2
@@ -42,7 +42,7 @@ fiveBtn.grid(row=2,column=1)
 sixBtn = Button(rootWindow, text='6', font='20', padx=31, pady=30, command=lambda: numPress(6, entry))
 sixBtn.grid(row=2,column=2)
 
-subBtn = Button(rootWindow, text='-', font='31', padx=33, pady=30, bg='#D3D3D3')
+subBtn = Button(rootWindow, text='-', font='31', padx=33, pady=30, bg='#D3D3D3', command=lambda: subPress(opDict, entry))
 subBtn.grid(row=2,column=3)
 
 # row 3
@@ -55,24 +55,20 @@ twoBtn.grid(row=3,column=1)
 threeBtn = Button(rootWindow, text='3', font='20', padx=31, pady=30, command=lambda: numPress(3, entry))
 threeBtn.grid(row=3,column=2)
 
-multBtn = Button(rootWindow, text='X', font='20', padx=30, pady=30, bg='#D3D3D3')
+multBtn = Button(rootWindow, text='X', font='20', padx=30, pady=30, bg='#D3D3D3', command=lambda: multPress(opDict, entry))
 multBtn.grid(row=3,column=3)
 
 # row 4
-<<<<<<< HEAD
 decimalBtn = Button(rootWindow, text='.00', font='19', padx=24, pady=30, bg='#D3D3D3', command=lambda: decimalPress(entry))
-=======
-decimalBtn = Button(rootWindow, text='.00', font='19', padx=22, pady=30, bg='#D3D3D3')
->>>>>>> 1993108594f7b628dad4c1476391779d90ee7f39
 decimalBtn.grid(row=4,column=0)
 
 zeroBtn = Button(rootWindow, text='0', font='20', padx=31, pady=30, command=lambda: numPress(0, entry))
 zeroBtn.grid(row=4,column=1)
 
-equalBtn = Button(rootWindow, text='=', font='20', padx=30, pady=30, bg='#D3D3D3')
+equalBtn = Button(rootWindow, text='=', font='20', padx=30, pady=30, bg='#D3D3D3', command=lambda: equalsPress(opDict, entry))
 equalBtn.grid(row=4,column=2)
 
-divBtn = Button(rootWindow, text='/', font='21', padx=33, pady=30, bg='#D3D3D3')
+divBtn = Button(rootWindow, text='/', font='21', padx=33, pady=30, bg='#D3D3D3', command=lambda: divPress(opDict, entry))
 divBtn.grid(row=4,column=3)
 
 # row 5
