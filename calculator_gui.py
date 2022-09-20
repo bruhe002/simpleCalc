@@ -60,7 +60,7 @@ multBtn = Button(rootWindow, text='X', font='20', padx=30, pady=30, bg='#D3D3D3'
 multBtn.grid(row=3,column=3)
 
 # row 4
-decimalBtn = Button(rootWindow, text='.00', font='19', padx=24, pady=30, bg='#D3D3D3', command=lambda: decimalPress(entry))
+decimalBtn = Button(rootWindow, text='.00', font='19', padx=24, pady=30, bg='#D3D3D3', command=lambda: decimalPress(entry, opDict))
 decimalBtn.grid(row=4,column=0)
 
 zeroBtn = Button(rootWindow, text='0', font='20', padx=31, pady=30, command=lambda: numPress(0, entry, opDict))

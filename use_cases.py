@@ -66,12 +66,18 @@ def divPress(myDict: dict, input: Entry):
     myDict['equalsFlag'] = False
     myDict['secondInputFirstDigit'] = True
 
-def decimalPress(input: Entry):
+def decimalPress(input: Entry, myDict: dict):
     input.config(state='normal')
     currentInput = input.get()
-    # if currentInput == '0':
-    #     input.delete(0, END)
+    # # if currentInput == '0':
+    # #     input.delete(0, END)
     
+    if myDict['secondInputFirstDigit'] or myDict['equalsFlag']:
+        input.delete(0, END)
+        input.insert(0, '0.')
+        myDict['secondInputFirstDigit'] = False
+        myDict['equalsFlag'] = False
+
     if not '.' in currentInput:
         input.insert(END, '.')
     
@@ -85,9 +91,6 @@ def equalsPress(myDict: dict, input: Entry):
         operandOne = float(myDict['operand']) if '.' in myDict['operand'] else int(myDict['operand'])
         operandTwo = float(input.get()) if '.' in input.get() else int(input.get())
 
-    
-
-    
         value = 0
         if operator == '+':
             value = operandOne + operandTwo    
