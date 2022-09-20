@@ -75,6 +75,7 @@ def decimalPress(input: Entry, myDict: dict):
     if myDict['secondInputFirstDigit'] or myDict['equalsFlag']:
         input.delete(0, END)
         input.insert(0, '0.')
+        currentInput = input.get()
         myDict['secondInputFirstDigit'] = False
         myDict['equalsFlag'] = False
 
@@ -87,32 +88,50 @@ def decimalPress(input: Entry, myDict: dict):
 def equalsPress(myDict: dict, input: Entry):
     input.config(state='normal')
     operator = myDict['operator']
-    if operator != '':
-        operandOne = float(myDict['operand']) if '.' in myDict['operand'] else int(myDict['operand'])
-        operandTwo = float(input.get()) if '.' in input.get() else int(input.get())
+    if not myDict['secondInputFirstDigit']:
+        if operator != '':
+            operandOne = float(myDict['operand']) if '.' in myDict['operand'] else int(myDict['operand'])
+            operandTwo = float(input.get()) if '.' in input.get() else int(input.get())
 
-        value = 0
-        if operator == '+':
-            value = operandOne + operandTwo    
-        elif operator == '-':
-            value = operandOne - operandTwo
-        elif operator == 'X':
-            value = operandOne * operandTwo
-        elif operator == '/':
-            value = int(operandOne / operandTwo) if operandOne % operandTwo == 0 else float(operandOne / operandTwo)
+            value = operatingOnOperands(operator, operandOne, operandTwo)
+            # if operator == '+':
+            #     value = operandOne + operandTwo    
+            # elif operator == '-':
+            #     value = operandOne - operandTwo
+            # elif operator == 'X':
+            #     value = operandOne * operandTwo
+            # elif operator == '/':
+            #     value = int(operandOne / operandTwo) if operandOne % operandTwo == 0 else float(operandOne / operandTwo)
 
-        myDict['operand'] = str(value)
-        # myDict['operator'] = ''
-        myDict['equalsFlag'] = True
-        myDict['secondInputFirstDigit'] = False
+            myDict['operand'] = str(value)
+            # myDict['operator'] = ''
+            myDict['equalsFlag'] = True
+            myDict['secondInputFirstDigit'] = False
 
+            input.delete(0, END)
+            input.insert(0, str(value))
+    else:
+        operandOne = float(input.get()) if '.' in input.get() else int(input.get())
+        operandTwo = float(myDict['operand']) if '.' in myDict['operand'] else int(myDict['operand'])
+        value = operatingOnOperands(operator, operandOne, operandTwo)
+        
         input.delete(0, END)
         input.insert(0, str(value))
-
     input.config(state='readonly')
 
 
-    
+def operatingOnOperands(operator, operandOne, operandTwo):
+    value = 0
+    if operator == '+':
+        value = operandOne + operandTwo    
+    elif operator == '-':
+        value = operandOne - operandTwo
+    elif operator == 'X':
+        value = operandOne * operandTwo
+    elif operator == '/':
+        value = int(operandOne / operandTwo) if operandOne % operandTwo == 0 else float(operandOne / operandTwo)
+
+    return value
 
 def signPress(input: Entry):
     input.config(state='normal')
